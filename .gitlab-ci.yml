@@ -1,0 +1,10 @@
+variables:
+  GIT_DEPTH: 100
+
+compile:
+  image: registry.gitlab.in.htwg-konstanz.de/bachelorarbeit-rb/log4j-docker:latest
+  stage: build
+  tags:
+    - docker
+  script:
+    - ./mvnw --global-toolchains ".github/workflows/maven-toolchains.xml" --batch-mode --errors compile
