@@ -16,6 +16,6 @@ analyze:
     - docker
   script:
     - mkdir data
-    - codeql database create --language=java data/java-database --command='./mvnw --global-toolchains ".github/workflows/maven-toolchains.xml" --batch-mode --errors compile'
+    - codeql database create --language=java data/java-database --command="./mvnw --global-toolchains ".github/workflows/maven-toolchains.xml" --batch-mode --errors compile"
     - codeql database analyze data/java-database --format=sarif-latest --output=result.sarif codeql/java-queries
     - codeql github upload-results --repository=ro99bre/CodeQL-Test_Log4J --sarif=result.sarif --ref=refs/heads/$CI_COMMIT_REF_NAME --commit=$CI_COMMIT_SHA --github-url=https://github.com
